@@ -1,0 +1,23 @@
+descriptor-schema-version: "2.2"
+
+info:
+  name: "iox_docker_pythonweb"
+  description: "simple docker python webserver on port 9000"
+  version: "1.0"
+  author-link: "http://www.cisco.com"
+  author-name: "Jens Depuydt"
+
+app:
+  cpuarch: "x86_64"
+  type: docker
+  resources:
+    profile: c1.small
+    network:
+      -
+        interface-name: eth0
+        ports:
+            tcp: [9000]
+
+  startup:
+    rootfs: rootfs.tar
+    target: ["python","/webserver.py","9000"]
